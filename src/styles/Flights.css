@@ -1,0 +1,289 @@
+.bg-img{
+    /* background-image: url(data:image/svg+xml;charset=utf-8,%3Csvg xmlns='http://www.w3.org/2000/svg' width='1440' height='256' fill='none'%3E%3Cpath fill='url(%23a)' fill-rule='evenodd' d='M1440 167.207C1224.62 223.655 980.573 255.5 722 255.5c-260.175 0-505.644-32.241-722-89.345V0h1440v167.207Z' clip-rule='evenodd'/%3E%3Cdefs%3E%3ClinearGradient id='a' x1='0' x2='1048.73' y1='0' y2='787.836' gradientUnits='userSpaceOnUse'%3E%3Cstop stop-color='%23FF6D38'/%3E%3Cstop offset='1' stop-color='%23DB7A21'/%3E%3C/linearGradient%3E%3C/defs%3E%3C/svg%3E); */
+    background-position: bottom;
+    background-repeat: no-repeat;
+    background-size: cover;
+    height: 0px;
+    position: absolute;
+    top: 0;
+    width: 100%;
+}
+
+
+.container-margin{
+    margin-top: 10px;
+}
+.flight-container{
+    background-color: #f0e7e7;
+    box-sizing: border-box;
+    height: auto;
+    position: relative;
+    width: 100%;
+}
+.basic-con{
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+    height: auto;
+    margin: 0 0 35px;
+    position: relative;
+}
+p{
+    color: #fff;
+    font-size: 22px;
+    font-weight: 500;
+    line-height: 28px;
+    margin: 2rem 0 1rem;
+    text-align: center;
+    text-shadow: rgba(0,0,0,.25) 0 1px 1px;
+}
+.search-container{
+    background-color: #fffcfc;
+    border-radius: 30px;
+    box-shadow: 1px 1px 2px 1px rgba(0,0,7,.2);
+    box-sizing: border-box;
+    height: 320px;
+    text-align: center;
+    width: 80%;
+}
+.radio-btn{
+    display: flex !important;
+    gap: 3rem;
+    justify-content: flex-start;
+    margin: 1.5rem 1rem;
+    
+}
+
+.journeyinfo {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: left;
+    gap: 15px;
+
+    >input,
+  select {
+    width: 34%;
+    height: 50px;
+    border-radius: 12px;
+    border: 2px solid lightgrey;
+    font-size: 1.2em;
+    
+  }
+  >select {
+    margin-left: 1.8em;
+  }
+}
+
+.datepicker{
+    margin-left: 30px;
+    height: 60px;
+    border-radius: 12px;
+    font-size: 20px;
+    border: 1px solid grey;
+  }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* SEARCH BUTTON*/
+.flight-search-btn {
+    margin-top: -1.5rem;
+}
+.fly {
+    align-items: center;
+    background-color: #ff6d38;
+    border: none;
+    color: #fff;
+    cursor: pointer;
+    display: flex;
+    font-family: Quicksand;
+    font-weight: 700;
+    justify-content: center;
+    text-transform: uppercase;
+}
+.flyt {
+    border-radius: 3rem;
+    box-shadow: 0 0.2rem 1.2rem 0 rgba(0,0,0,.13);
+    font-size: 1.3rem;
+    height: 2.9rem;
+    width: 15rem;
+}
+.add-first-some {
+    align-items: center;
+    display: flex;
+    height: 5rem;
+    justify-content: center;
+    padding-bottom: 2rem;
+    width: 100%;
+}
+.add_some_img {
+    border-radius: 1rem;
+    height: 100%;
+    width: 70%;
+}
+.footer-cyz {
+    background-color: #f8f1f1;
+}
+.footer-container-main {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    margin: 0.5rem 7.5rem;
+}
+.footer-container {
+    display: flex;
+    justify-content: space-between;
+    padding: 1rem;
+}
+.footer-first {
+    display: flex;
+    flex-direction: column;
+    row-gap: 0.4rem;
+}
+h5 {
+    display: block;
+    font-size: 0.60rem;
+    margin-block-start: 1.67em;
+    margin-block-end: 1.67em;
+    margin-inline-start: 0px;
+    margin-inline-end: 0px;
+    font-weight: bold;
+}
+.footer-para {
+    color: #847f7f;
+    font-size: 0.8rem;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+.footer-underline {
+    background-color: #847f7f;
+    height: 0.1rem;
+}
+.footer-content {
+    cursor: pointer;
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    margin: 0.8rem;
+    row-gap: 0.4rem;
+}
+.footer-bottom-Container {
+    display: flex;
+    flex-direction: column;
+    row-gap: 0.2rem;
+}
+.footer-heading-h5 {
+    color: #625f5f;
+}   
+.footer-para{
+    color: #847f7f;
+    font-size: 0.8rem;
+    line-height: 20px;
+}
