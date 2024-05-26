@@ -90,6 +90,10 @@ flight page */
     width: 100%;
     font-size: 20px;
 }
+.active{
+    border-bottom: 4px solid #2276e3;
+    color: #2276e3;
+}
 ul li {
     border-radius: 15px;
     list-style-type: none;

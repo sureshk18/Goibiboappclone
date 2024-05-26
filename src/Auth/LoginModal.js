@@ -115,7 +115,7 @@ export default function BasicModal() {
 
     return (
         <div>
-            <Button onClick={handleOpen} style={{ marginTop: '100px' }}>Login</Button>
+            <Button onClick={handleOpen} style={{ marginTop: '40px' }}>Login</Button>
             <Modal
                 open={open}
                 onClose={handleClose}
@@ -126,6 +126,7 @@ export default function BasicModal() {
                     <h1 style={{ alignItems: 'center', marginLeft: '100px' }}> Login</h1>
                     <Typography id="modal-modal-title" variant="h6" component="h2" style={{ marginTop: '30px' }}>
                         Username
+
                     </Typography>
                     <input type="text" id="username" name="username" required />
                     <Typography id="modal-modal-title" variant="h6" component="h2">

@@ -14,14 +14,21 @@ import BasicModal from "../Auth/LoginModal";
 import SignupModal from '../Auth/SignupModal';
 import SearchFlightData from '../search/SearchFlightData';
 import Footer from "../pages/Footer";
+import AuthProvider from "../Auth/AuthProvider";
 
 function App() {
+
+
+
+
   return <div >
     <>
       <BrowserRouter>
         <Navbar />
-        <BasicModal />
-        <SignupModal />
+        <AuthProvider>
+          {/* <BasicModal />
+          <SignupModal /> */}
+        </AuthProvider>
         <Routes>
           <Route path="/" element={<Flights />}></Route>
           <Route path="/flights" element={<Flights />}></Route>
@@ -31,6 +38,8 @@ function App() {
           <Route path="/bus" element={<Bus />}></Route>
           <Route path="/holidays" element={<Holidays />}></Route>
           <Route path="/forex" element={<Forex />}></Route>
+          {/* <Route path="/login" element={<LoginModal />}></Route>
+          <Route path="/signup" element={<SignupModal />}></Route> */}
           <Route path="/searchflight" element={<SearchFlightData />}></Route>
         </Routes>
         <Footer />

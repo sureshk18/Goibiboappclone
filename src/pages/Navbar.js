@@ -5,11 +5,12 @@ import logo from "../assests/logo.png";
 
 
 function Navbar() {
+
     return (
         <div>
-            <nav className='navbar-container'>
+            <nav className='navbar-container '>
                 <Link to="/flights"><img className='logo-img' src={logo} /></Link>
-                <ul className='navBar'>
+                <ul className='navBar '>
                     <Link to="/flights" className='flights'>
                         {/* <img src={Download} className='header-img'/> */}
                         <li>Flights</li>
@@ -34,13 +35,14 @@ function Navbar() {
                     </Link>
 
                 </ul>
+                <div>
+                    <ul className='nav-linkss'>
+                        <button  >LOGIN</button>
+                        <p className='dash'>/</p>
+                        <button >SIGNUP</button>
+                    </ul>
 
-                <ul className='nav-linkss'>
-                    <button>LOGIN</button>
-                    <p className='dash'>/</p>
-                    <button >SIGNUP</button>
-
-                </ul>
+                </div>
             </nav >
 
         </div>

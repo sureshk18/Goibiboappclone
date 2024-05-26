@@ -1,14 +1,25 @@
 import React, { createContext, useContext, useState } from "react";
+import { userSignup } from "./apis/indexApi";
 
-const AuthContext = createContext();
+export const AuthContext = createContext();
 
 
 export default function AuthProvider({ children }) {
-    let isUserLoggedIn = sessionStorage.getItem("useToken") ? true : false;
-    const [isLoggedIn, setIsLoggedIn] = useState(isUserLoggedIn);
+    const [user, setUser] = useState();
 
+    const login = () => {
+
+    }
+
+    const Signup = (email, password) => {
+        userSignup()
+    }
+
+    const logout = () => {
+
+    }
     return (
-        <AuthContext.Provider value={{ isLoggedIn, setIsLoggedIn }}>
+        <AuthContext.Provider value={{ user, login, Signup, logout }}>
             {children}
         </AuthContext.Provider>
     );

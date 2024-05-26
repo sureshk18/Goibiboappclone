@@ -1,43 +1,111 @@
+/* eslint-disable jsx-a11y/alt-text */
 import "../styles/Flights.css";
 import addvert from "../assests/addvert.jpg";
 import background from "../assests/background.svg";
 import axios from 'axios';
 import React, { useEffect, useState } from 'react'
 import { useNavigate } from "react-router-dom";
+import CompareArrowsIcon from '@mui/icons-material/CompareArrows';
 import TextField from '@mui/material/TextField';
-import { DemoContainer } from '@mui/x-date-pickers/internals/demo';
-import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs';
-import { LocalizationProvider } from '@mui/x-date-pickers/LocalizationProvider';
-import { DatePicker } from '@mui/x-date-pickers/DatePicker';
+// import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs';
+// import { LocalizationProvider } from '@mui/x-date-pickers/LocalizationProvider';
+// import { DatePicker } from '@mui/x-date-pickers/DatePicker';
 
 
 const OffersForYou = () => {
-    const [userData, setUserData] = useState([]);
-    const [showData, setShowData] = useState(false);
-    const navigate = useNavigate()
+    const [airports, setAirports] = useState([]);
+    const [flight, setFlight] = useState([]);
+    const [day, setDay] = useState("");
 
-    const Flights = async () => {
-        try {
-            const response = await axios.get('https://academics.newtonschool.co/api/v1/bookingportals/offers', {
-                headers: {
-                    projectId: 'ge5upq3e1s5h'
-                }
-            });
-            const json = response.data;
-            console.log(json.data.offers);
-            setUserData(json.data.offers);
-        } catch (err) {
-            console.log('Error:', err);
-        }
+    const [selectedDate, setSelectedDate] = useState("");
 
+    const [sourceAirport, setSourceAirport] = useState("");
+    const [destinationAirport, setDestinationAirport] = useState("");
+
+    const today = new Date().toISOString().split("T")[0];
+
+    const daysOfWeek = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
+    const [flightSearchData, setFlightSearchData] = useState([]);
+
+
+    const handleFlightSearchData = (fff) => {
+        // handleCheckAirports(airport_name, destinationAirport);
+        setFlightSearchData(fff);
+        //console.log(flightSearchData);
+        console.log(flight);
     };
-    useEffect(() => {
-        Flights()
-    }, []);
+    const handleSourceAirport = (airport_name) => {
+        // handleCheckAirports(airport_name, destinationAirport);
+        setSourceAirport(airport_name);
+        console.log(sourceAirport);
+    };
 
-    const searchFlight = () => {
-        navigate('/searchFlight')
-    }
+    const handleDestinationAirport = (airport_name) => {
+        // handleCheckAirports(sourceAirport, airport_name);
+        setDestinationAirport(airport_name);
+        console.log(destinationAirport);
+    };
+
+    const handleDateChange = (event) => {
+        console.log(event.target.value);
+        setSelectedDate(event.target.value);
+    };
+
+    const flightSearch = async () => {
+        const dateObject = new Date(selectedDate);
+
+        const dayOfWeek = dateObject.getDay();
+        const dayName = daysOfWeek[dayOfWeek];
+        setDay(dayName);
+        console.log("dayName =", day);
+        console.log("soureceAirport =", sourceAirport);
+        console.log("destination Airport =", destinationAirport);
+
+
+        const response = await fetch(
+            `https://academics.newtonschool.co/api/v1/bookingportals/flight?search={"source":"Del","destination":"Bom"}&day=Mon`,
+            {
+                headers: { projectID: "9hpv8qj9o596" },
+            }
+        );
+        const results = await response.json();
+
+        console.log(results);
+        handleFlightSearchData(results);
+        setFlight(results.data.flights);
+    };
+
+    const fetchAirpots = async () => {
+        const response = await fetch(
+            "https://academics.newtonschool.co/api/v1/bookingportals/airport",
+            {
+                headers: { projectID: "projectid" },
+            }
+        );
+        const results = await response.json();
+        console.log(results);
+
+        setAirports(results.data.airports);
+    };
+    const navigate = useNavigate();
+
+    const Flight = () => {
+        flightSearch();
+        // navigate("/searchFlight")
+        //transferring data to searchflight
+        navigate("/searchFlight", {
+            state: {
+                airports: airports,
+                sourceAirport: sourceAirport,
+                destinationAirport: destinationAirport,
+                day: day,
+            },
+        });
+    };
+
+    useEffect(() => {
+        fetchAirpots();
+    }, []);
 
     return (
         <section>
@@ -45,49 +113,109 @@ const OffersForYou = () => {
                 <img className="bg-img" src={background} />
                 <div className='basic-icon'>
                     <p> Book Domestic and International Flight Tickets</p>
-                    <div className='search-container'>
-                        <div className='radio-btn'>
-                            <div>
-                                <input type='radio' name='one-way' id='oneway' />
-                                <label for='oneway'>One-way</label>
+                    <form>
+                        <div className='search-container'>
+                            <div className='radio-btn'>
+                                <div>
+                                    <input type='radio' name='one-way' id='oneway' defaultChecked/>
+                                    <label for='oneway'>One-way</label>
+                                </div>
+                                <div>
+                                    <input type='radio' name='one-way' id='roundtrip' disabled/>
+                                    <label for='roundtrip'>Round-trip</label>
+                                </div>
+                                <div>
+                                    <input type='radio' name='one-way' id='multicity' disabled/>
+                                    <label for='multicity'>Multi-city</label>
+                                </div>
                             </div>
-                            <div>
-                                <input type='radio' name='one-way' id='roundtrip' />
-                                <label for='roundtrip'>Round-trip</label>
-                            </div>
-                            <div>
-                                <input type='radio' name='one-way' id='multicity' />
-                                <label for='multicity'>Multi-city</label>
-                            </div>
-                        </div>
-                        <div className="journeyinfo">
-                            <TextField
-                                id="outlined-multiline-flexible"
-                                label="from"
-                                placeholder="Enter city or airport"
-                                multiline
-                                maxRows={4}
-                            />
-                            <TextField
-                                id="outlined-multiline-flexible"
-                                label="to"
-                                placeholder="Enter city or airport"
-                                multiline
-                                maxRows={4}
-                            />
-                            <LocalizationProvider dateAdapter={AdapterDayjs}>
-                                <DemoContainer components={['DatePicker']}>
-                                    <DatePicker />
-                                </DemoContainer>
-                            </LocalizationProvider>
+                            <div className="input-data">
+                                <input
+                                    // label="From"
+                                    placeholder="DELHI"
+                                    data={airports}
+                                    onSearchData={handleSourceAirport}
+                                    className="text-input"
+                                />
+                                <div className="leftRightArrow">
+                                    <CompareArrowsIcon />
+                                </div>
+                                <input style={{ alignItems: 'center' }}
+                                    // label="From"
+                                    placeholder="MUMBAI"
+                                    data={airports}
+                                    onSearchData={handleSourceAirport}
+                                    className="text-input"
+                                />
+                                
+                                <input type="date"
+                                    id="dateInput"
+                                    value={selectedDate}
+                                    onChange={handleDateChange}
+                                    min={today} />
 
+                                <div className="travellers">
+                                    {/* <span className="t-class">travellers & Class</span> */}
+                                    <div className="mainnn">1 Adult / Economy
+                                    </div>
+                                </div>
+                            </div>
+
+
+
+                            <div className="content-data-lower">
+                                {/* <div>
+                                    Select A<br />
+                                    Fare Type:
+                                </div> */}
+                                <div className="profession">
+                                    <input
+                                        style={{ marginRight: "5px" }}
+                                        type="radio"
+                                        name="profession"
+                                    ></input>
+                                    Regular
+                                </div>
+                                <div className="profession">
+                                    <input
+                                        style={{ marginRight: "5px" }}
+                                        type="radio"
+                                        name="profession"
+                                    ></input>
+                                    Armed Forces
+                                </div>
+                                <div className="profession">
+                                    <input
+                                        style={{ marginRight: "5px" }}
+                                        type="radio"
+                                        name="profession"
+                                    ></input>
+                                    Senior Citizen
+                                </div>
+                                <div className="profession">
+                                    <input
+                                        style={{ marginRight: "5px" }}
+                                        type="radio"
+                                        name="profession"
+                                    ></input>
+                                    Student
+                                </div>
+                                <div className="profession">
+                                    <input
+                                        style={{ marginRight: "5px" }}
+                                        type="radio"
+                                        name="profession"
+                                    ></input>
+                                    Doctors & Nurses
+                                </div>
+                            </div>
                         </div>
-                    </div>
-                    <button className="fly flyt flight-search-btn" onClick={searchFlight}>SEARCH FLIGHTS</button>
+                        <button className="searchflight" onClick={Flight}>SEARCH FLIGHTS</button>
+                    </form>
                 </div>
-                <div className="add-first-some">
+                < div className="add-first-some" >
                     <img className="add_some_img" src={addvert} alt="other-image" />
-                </div>
+                </div >
             </div >
 
         </section >
@@ -95,104 +223,3 @@ const OffersForYou = () => {
 }
 
 export default OffersForYou;
-
-{/* <div className='App'>
-                {userData.map((offers, index) => (
-                    <div key={index}>{offers._id} {offers.F1}</div>
-                ))}
-
-
-                https://academics.newtonschool.co/api/v1/bookingportals/offers?filter={"type":"FLIGHTS"}
-            </div> 
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        <div className="sc-12foipm-14 sdlhvXDk">
-                            <TextField id="outlined-basic" label="Outlined" variant="outlined" />
-
-                            <div className="sc-12foipm-34 iHoHRr">
-                                <div className="sc-12foipm-36 hFZOAX">
-                                    <div className="sc-12foipm-16 wRKJm fswFld " style={{ width: '260px' }}>
-                                        <span className="sc-12foipm-17 eBxhjL fswWidgetLabel">From</span>
-                                        <p className="sc-12foipm-20 bhnHeQ">Enter city or airport</p>
-                                    </div>
-                                </div>
-
-                                <div className="sc-12foipm-34 iHoHRr">
-                                    <div className="sc-12foipm-36 jcFcyw">
-                                        <div className="sc-12foipm-16 wRKJm fswFld" style={{ width: '260px', paddingLeft: '27px' }}>
-                                            <span className="sc-12foipm-17 eBxhjL fswWidgetLabel">To</span>
-                                            <p>Enter city or airport</p>
-                                        </div>
-                                    </div>
-                                </div>
-
-                                <div className="sc-12foipm-34 iHoHRr">
-                                    <div className="sc-12foipm-16 wRKJm fswFld " style={{ width: '142px' }}>
-                                        <span className="sc-12foipm-17 eBxhjL fswWidgetLabel">Departure</span>
-                                        <p className="sc-12foipm-18 cTPYom fswWidgetTitle">"21 Mar' 24"
-                                            <span className="sc-12foipm-22 cUvQPq fswDownArrow"></span>
-                                        </p>
-                                        {/* <p className="sc-12foipm-19 heOORq">Thrusday</p> 
-                                        </div>
-                                        </div>
-        
-                                        <div className="sc-12foipm-34 iHoHRr">
-                                            <div className="sc-12foipm-16 wRKJm fswFld " style={{ width: '142px' }}>
-                                                <span className="sc-12foipm-17 eBxhjL fswWidgetLabel"> Return</span>
-                                                <p className="sc-12foipm-23 iFkclr">Click to add a return flight for better discounts</p>
-                                            </div>
-                                        </div>
-        
-                                        <div className="sc-12foipm-34 imEUuQ">
-                                            <div className="sc-12foipm-16 wRKJm fswFld" style={{ style: 'flex: 1 1 0%' }}>
-                                                <span className="sc-12foipm-17 eBxhjL fswWidgetLabel">Travellers & Class</span>
-                                                <p className="sc-12foipm-18 cTPYom fswWidgetTitle">1 Adult
-                                                    <span className="sc-12foipm-22 cUvQPq fswDownArrow fswDownArrowTraveller"></span></p>
-                                                <p className="sc-12foipm-19 heOORq">economy</p>
-                                            </div>
-                                        </div>
-                                    </div>
-        
-                                </div>
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        */}
