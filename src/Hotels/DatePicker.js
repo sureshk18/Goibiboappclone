@@ -14,6 +14,7 @@ export default function BasicDateRangePicker({ date, setDate }) {
 
 
   return (
+    <>
     <LocalizationProvider dateAdapter={AdapterDayjs}>
       <DemoContainer
         components={[
@@ -37,5 +38,6 @@ export default function BasicDateRangePicker({ date, setDate }) {
         </DemoItem>
       </DemoContainer>
     </LocalizationProvider>
+    </>
   );
 }

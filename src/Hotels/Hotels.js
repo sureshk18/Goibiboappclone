@@ -50,18 +50,28 @@
 // export default Hotels
 
 import '../Hotels/Hotels.css';
-import React,{useState} from 'react'
+import React, { useState } from 'react'
 import SearchIcon from '@mui/icons-material/Search';
+import HotelSearch from './HotelSearch';
 // import BasicDateRangePicker from '../Hotels/DatePicker';
+// import HotelSearch from '../Hotels/HotelSearch';
+import { useNavigate } from 'react-router-dom';
+
+
 
 const Hotels = () => {
   // const [date, setDate] = useState(new Date());
+  const navigate = useNavigate()
 
+  const searchHotel = () => {
+    HotelSearch();
+    navigate('/hotelsearch')
+  }
 
 
   return (
     <><div>
-      <section className='hotels-container' style={{marginTop:'60px'}}>
+      <section className='hotels-container' style={{ marginTop: '60px' }}>
         <div className='hotel-details'>
           <div className='book-hotel-content'>Book Hotels & Homestays</div>
           <section className='hotels-card'>
@@ -81,31 +91,32 @@ const Hotels = () => {
                   <label htmlFor="round-trip">International</label>
                 </div>
               </div>
-                <div className='city-search'>
-                  <span className='city-search'>Where</span>
-                  <div className='searchInput'>
-                    <SearchIcon/>
-                    <input type='text' placeholder='DELHI'/>
-                  </div>
+              <div className='city-search'>
+                <span className='city-search'>Where</span>
+                <div className='searchInput'>
+                  <SearchIcon />
+                  <input type='text' placeholder='DELHI' />
                 </div>
-                <div className='date-picker'>
-                  {/* <BasicDateRangePicker date={date} setDate={setDate}/> */}
-                </div>
-                <div>
+              </div>
+              <div className='date-picker'>
+                {/* <BasicDateRangePicker date={date} setDate={setDate}/> */}
+              </div>
+              <div>
                 <div className='guest-room'>
                   <div className='guest-room'>Guests & Rooms</div>
-                  
                 </div>
                 <div className='guest-detail'>
-                    <input type='text' className='guest' value="3 Adults | 0 Child | 1 Room "/>
-                  </div>
+                  <input type='text' className='guest' value="3 Adults | 0 Child | 1 Room " />
                 </div>
-                <div></div>
+              </div>
+              
             </div>
+            <button className='search-btn' onClick={searchHotel}>SEARCH</button>
           </section>
         </div>
+
       </section>
-      </div>
+    </div>
     </>
   )
 }

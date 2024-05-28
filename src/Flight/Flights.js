@@ -62,49 +62,52 @@ const OffersForYou = () => {
         console.log("destination Airport =", destinationAirport);
 
 
-        const response = await fetch(
-            `https://academics.newtonschool.co/api/v1/bookingportals/flight?search={"source":"Del","destination":"Bom"}&day=Mon`,
-            {
-                headers: { projectID: "9hpv8qj9o596" },
-            }
-        );
-        const results = await response.json();
+        //     const response = await fetch(
+        //         `https://academics.newtonschool.co/api/v1/bookingportals/flight?search={"source":"DEL","destination":"BOM"}&day=Mon`,
+        //         {
+        //             headers: { projectID: "9hpv8qj9o596" },
+        //         }
+        //     );
+        //     const results = await response.json();
 
-        console.log(results);
-        handleFlightSearchData(results);
-        setFlight(results.data.flights);
+        //     console.log(results);
+        //     handleFlightSearchData(results);
+        //     setFlight(results.data.flights);
     };
 
-    const fetchAirpots = async () => {
-        const response = await fetch(
-            "https://academics.newtonschool.co/api/v1/bookingportals/airport",
-            {
-                headers: { projectID: "projectid" },
-            }
-        );
-        const results = await response.json();
-        console.log(results);
+    // const fetchAirpots = async () => {
+    //     const response = await fetch(
+    //         "https://academics.newtonschool.co/api/v1/bookingportals/airport",
+    //         {
+    //             headers: { projectID: "projectid" },
+    //         }
+    //     );
+    //     const results = await response.json();
+    //     console.log(results);
 
-        setAirports(results.data.airports);
-    };
+    //     setAirports(results.data.airports);
+    // };
     const navigate = useNavigate();
 
     const Flight = () => {
-        flightSearch();
-        // navigate("/searchFlight")
-        //transferring data to searchflight
-        navigate("/searchFlight", {
-            state: {
-                airports: airports,
-                sourceAirport: sourceAirport,
-                destinationAirport: destinationAirport,
-                day: day,
-            },
-        });
+        // flightSearch();
+        const sourceAirport = "DEL";
+        const destinationAirport = "LKO";
+        const day = "Mon";
+
+        const path = `/searchFlight/source=${sourceAirport},destination=${destinationAirport},day=${day}`;
+
+        navigate(path);
     };
+    // state: {
+    //     airports: airports,
+    //     sourceAirport: sourceAirport,
+    //     destinationAirport: destinationAirport,
+    //     day: day,
+    // },
 
     useEffect(() => {
-        fetchAirpots();
+        flightSearch();
     }, []);
 
     return (
@@ -117,15 +120,15 @@ const OffersForYou = () => {
                         <div className='search-container'>
                             <div className='radio-btn'>
                                 <div>
-                                    <input type='radio' name='one-way' id='oneway' defaultChecked/>
+                                    <input type='radio' name='one-way' id='oneway' defaultChecked />
                                     <label for='oneway'>One-way</label>
                                 </div>
                                 <div>
-                                    <input type='radio' name='one-way' id='roundtrip' disabled/>
+                                    <input type='radio' name='one-way' id='roundtrip' disabled />
                                     <label for='roundtrip'>Round-trip</label>
                                 </div>
                                 <div>
-                                    <input type='radio' name='one-way' id='multicity' disabled/>
+                                    <input type='radio' name='one-way' id='multicity' disabled />
                                     <label for='multicity'>Multi-city</label>
                                 </div>
                             </div>
@@ -147,7 +150,7 @@ const OffersForYou = () => {
                                     onSearchData={handleSourceAirport}
                                     className="text-input"
                                 />
-                                
+
                                 <input type="date"
                                     id="dateInput"
                                     value={selectedDate}

@@ -40,7 +40,7 @@ function App() {
           <Route path="/forex" element={<Forex />}></Route>
           {/* <Route path="/login" element={<LoginModal />}></Route>
           <Route path="/signup" element={<SignupModal />}></Route> */}
-          <Route path="/searchflight" element={<SearchFlightData />}></Route>
+          <Route path="/searchflight/:searchedData" element={<SearchFlightData />}></Route>
         </Routes>
         <Footer />
       </BrowserRouter>
