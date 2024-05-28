@@ -40,43 +40,47 @@ function Search() {
     <div className="flight-list">
       {flightList.length > 0 ? (
         flightList.map(flight => (
-          <Card key={flight._id} sx={{ margin: '20px', backgroundColor: 'lightblue' }}>
+          <div key={flight._id} style={{ margin: '45px', className:'flight-data',width:'80%',marginLeft:'20%'}}>
             <CardContent>
-              <Typography variant="h5" component="div">
-                Flight ID: {flight.flightID}
+              <div className='flight-data'><Typography variant="p" component="div">
+                <h1 >Flight ID:</h1> 
+                <h6>{flight.flightID}</h6>
               </Typography>
-              <Typography sx={{ mb: 1.5 }} color="text.secondary">
-                Airline: {flight.airline}
+              {/* <Typography sx={{ mb: 1.5 }} color="text.secondary">
+                <h4>Airline:</h4> {flight.airline}
               </Typography>
               <Typography variant="body2">
                 Source: {flight.source}
               </Typography>
               <Typography variant="body2">
                 Destination: {flight.destination}
+              </Typography>*/}
+              <Typography variant="body2">
+                <h3 className='map-data'>Departure Time:</h3>
+                 {flight.departureTime}
               </Typography>
               <Typography variant="body2">
-                Departure Time: {flight.departureTime}
+                <h3 className='map-data'>Arrival Time: </h3>{flight.arrivalTime}
+              </Typography> 
+              <Typography variant="body2">
+                <h3 className='map-data'>Duration:</h3> {flight.duration} hours
               </Typography>
               <Typography variant="body2">
-                Arrival Time: {flight.arrivalTime}
+               <h3 className='map-data'> Stops: </h3>{flight.stops}
               </Typography>
               <Typography variant="body2">
-                Duration: {flight.duration} hours
+                <h3 className='map-data'>Ticket Price:</h3> <b>₹ : </b> {flight.ticketPrice}
               </Typography>
-              <Typography variant="body2">
-                Stops: {flight.stops}
-              </Typography>
-              <Typography variant="body2">
-                Ticket Price: ₹{flight.ticketPrice}
-              </Typography>
-              <Typography variant="body2">
+              {/* <Typography variant="body2">
                 Available Seats: {flight.availableSeats}
               </Typography>
               <Typography variant="body2">
                 Amenities: {flight.amenities.join(', ')}
-              </Typography>
+              </Typography> */}
+              </div>
             </CardContent>
-          </Card>
+            
+          </div>
         ))
       ) : (
         <Typography variant="h5" component="div" sx={{ textAlign: 'center', marginTop: '20px' }}>
