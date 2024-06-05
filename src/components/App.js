@@ -15,11 +15,9 @@ import SignupModal from '../Auth/SignupModal';
 import SearchFlightData from '../search/SearchFlightData';
 import Footer from "../pages/Footer";
 import AuthProvider from "../Auth/AuthProvider";
+import FareData from "../search/FareData";
 
 function App() {
-
-
-
 
   return <div >
     <>
@@ -41,6 +39,7 @@ function App() {
           {/* <Route path="/login" element={<LoginModal />}></Route>
           <Route path="/signup" element={<SignupModal />}></Route> */}
           <Route path="/searchflight/:searchedData" element={<SearchFlightData />}></Route>
+          <Route path="/faredata" element={<FareData/>}></Route>
         </Routes>
         <Footer />
       </BrowserRouter>
