@@ -52,23 +52,21 @@
 import '../Hotels/Hotels.css';
 import React, { useState } from 'react'
 import SearchIcon from '@mui/icons-material/Search';
-import HotelSearch from './HotelSearch';
-// import BasicDateRangePicker from '../Hotels/DatePicker';
-// import HotelSearch from '../Hotels/HotelSearch';
+// import HotelSearch from './HotelSearch';
+import { LocalizationProvider } from '@mui/x-date-pickers/LocalizationProvider';
+import BasicDateRangePicker from '../Hotels/DatePicker';
+import HotelSearch from '../Hotels/HotelSearch';
 import { useNavigate } from 'react-router-dom';
 
 
 
 const Hotels = () => {
-  // const [date, setDate] = useState(new Date());
+  const [date, setDate] = useState(new Date());
   const navigate = useNavigate()
-
   const searchHotel = () => {
-    HotelSearch();
+    // HotelSearch();
     navigate('/hotelsearch')
   }
-
-
   return (
     <><div>
       <section className='hotels-container' style={{ marginTop: '60px' }}>
@@ -99,7 +97,9 @@ const Hotels = () => {
                 </div>
               </div>
               <div className='date-picker'>
-                {/* <BasicDateRangePicker date={date} setDate={setDate}/> */}
+                <LocalizationProvider>
+                  <BasicDateRangePicker date={date} setDate={setDate} />
+                </LocalizationProvider>
               </div>
               <div>
                 <div className='guest-room'>
@@ -109,7 +109,7 @@ const Hotels = () => {
                   <input type='text' className='guest' value="3 Adults | 0 Child | 1 Room " />
                 </div>
               </div>
-              
+
             </div>
             <button className='search-btn' onClick={searchHotel}>SEARCH</button>
           </section>

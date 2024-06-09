@@ -16,6 +16,7 @@ import SearchFlightData from '../search/SearchFlightData';
 import Footer from "../pages/Footer";
 import AuthProvider from "../Auth/AuthProvider";
 import FareData from "../search/FareData";
+import HotelSearch from "../Hotels/HotelSearch";
 
 function App() {
 
@@ -38,7 +39,8 @@ function App() {
           <Route path="/forex" element={<Forex />}></Route>
           {/* <Route path="/login" element={<LoginModal />}></Route>
           <Route path="/signup" element={<SignupModal />}></Route> */}
-          <Route path="/searchflight/:searchedData" element={<SearchFlightData />}></Route>
+          <Route path="/searchflight" element={<SearchFlightData />}></Route>
+          <Route path="/hotelsearch" element={<HotelSearch/>}></Route>
           <Route path="/faredata" element={<FareData/>}></Route>
         </Routes>
         <Footer />

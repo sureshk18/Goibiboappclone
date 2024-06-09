@@ -4,6 +4,10 @@ import './Flight.css';
 // import Offers from "./Offers";
 import SearchTextField from "../search/searchBox";
 import { useNavigate } from "react-router-dom";
+// import Search from "../search/SearchFlightData";
+
+
+
 const Flight = () => {
   const [airports, setAirports] = useState([]);
   const [flight, setFlight] = useState([]);
@@ -80,6 +84,7 @@ const Flight = () => {
   };
   useEffect(() => {
     fetchAirpots();
+    // Search();
   }, []);
   return (
     <>
