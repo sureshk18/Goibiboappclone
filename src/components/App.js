@@ -1,52 +1,105 @@
-import React from "react";
-import { BrowserRouter, Routes, Route } from "react-router-dom";
-import Navbar from "../pages/Navbar";
-import OffersForYou from "../Flight/Flights";
-import "../styles/Navbar.css";
-import Flights from "../Flight/Flights";
-import Hotels from "../Hotels/Hotels";
-import Trains from "../Train/Trains";
-import Cabs from "../pages/Cabs";
-import Bus from "../Bus/Bus";
-import Holidays from "../pages/Holidays";
-import Forex from "../pages/Forex";
-import BasicModal from "../Auth/LoginModal";
-import SignupModal from '../Auth/SignupModal';
-import SearchFlightData from '../search/SearchFlightData';
-import Footer from "../pages/Footer";
-import AuthProvider from "../Auth/AuthProvider";
-import FareData from "../search/FareData";
-import HotelSearch from "../Hotels/HotelSearch";
+import Navbar from "./navbar/Navbar";
+import Layout from "./layout/Layout";
+import { createBrowserRouter, RouterProvider } from "react-router-dom";
+import Flight_Page from "./flight-section/Flight_Page";
+// import Hotel_Page from "./hotel-section/Hotel_Page";
+import Train_Page from "./train-section/Train_Page";
+import Bus_Page from "./bus-section/Bus_Page";
+import Flight_Search_Page from "./flight-section/Flight_Search_Page";
+// import Hotel_Search_Page from "./hotel-section/Hotel_Search_Page";
+import Hotel_Detail from "./hotel-section/Hotel_Detail";
+import Train_Search_Page from "./train-section/Train_Search_Page";
+import Bus_Search_Page from "./bus-section/Bus_Search_Page";
+import Payment from "./payment/Payment";
+import Bus_Booking_Page from "./checkout/Bus_Booking_Page";
+import Train_Booking_Page from "./checkout/Train_Booking_Page";
+import Flight_Booking_Page from "./checkout/Flight_Booking_Page";
+import Hotel_Booking_Page from "./checkout/Hotel_Booking_Page";
+import My_Trips from "./my-trips/My_Trips";
+import { lazy } from "react";
+import { Suspense } from "react";
+import GlobalLoader from "./loder/GlobalLoader";
+
+const Hotel_Page= lazy(()=>import("./hotel-section/Hotel_Page"))
+const Hotel_Search_Page= lazy(()=>import("./hotel-section/Hotel_Search_Page"))
 
 function App() {
-
-  return <div >
-    <>
-      <BrowserRouter>
-        <Navbar />
-        <AuthProvider>
-          {/* <BasicModal />
-          <SignupModal /> */}
-        </AuthProvider>
-        <Routes>
-          <Route path="/" element={<Flights />}></Route>
-          <Route path="/flights" element={<Flights />}></Route>
-          <Route path="/hotels" element={<Hotels />}></Route>
-          <Route path="/trains" element={<Trains />}></Route>
-          <Route path="/cabs" element={<Cabs />}></Route>
-          <Route path="/bus" element={<Bus />}></Route>
-          <Route path="/holidays" element={<Holidays />}></Route>
-          <Route path="/forex" element={<Forex />}></Route>
-          {/* <Route path="/login" element={<LoginModal />}></Route>
-          <Route path="/signup" element={<SignupModal />}></Route> */}
-          <Route path="/searchflight" element={<SearchFlightData />}></Route>
-          <Route path="/hotelsearch" element={<HotelSearch/>}></Route>
-          <Route path="/faredata" element={<FareData/>}></Route>
-        </Routes>
-        <Footer />
-      </BrowserRouter>
-    </>
-  </div>;
+  return (
+    <div className="bg-gray-200 z-0 m-0 p-0">
+      <RouterProvider router={appRouter}>
+        <Layout/>
+      </RouterProvider>
+    </div>
+  );
 }
+
+export const appRouter = createBrowserRouter([
+  {
+    path: "/",
+    element: <Layout />,
+    children:[
+      {
+        path:"/",
+        element:<Flight_Page/>
+      },
+      {
+        path:"/flightsearch",
+        element:<Flight_Search_Page/>
+      },
+      {
+        path:"/mytrips",
+        element:<My_Trips/>
+      },
+      {
+        path:"/hotelsearch",
+        element:<Suspense fallback={<GlobalLoader />}><Hotel_Search_Page/></Suspense>
+      },
+      {
+        path:"/hotel",
+        element:<Suspense fallback={<GlobalLoader />}><Hotel_Page/></Suspense>
+      },
+      {
+        path:"/hotel/:id",
+        element:<Hotel_Detail/>
+      },
+      {
+        path:"/trains",
+        element:<Train_Page/>
+      },
+      {
+        path:"/trainsearch",
+        element:<Train_Search_Page/>
+      },
+      {
+        path:"/bus",
+        element:<Bus_Page/>
+      },
+      {
+        path:"/bussearch",
+        element:<Bus_Search_Page/>
+      },
+      {
+        path:"/booking/bus/:data",
+        element:<Bus_Booking_Page/>
+      },
+      {
+        path:"/booking/train/:data",
+        element:<Train_Booking_Page/>
+      },
+      {
+        path:"/booking/flight/:data",
+        element:<Flight_Booking_Page/>
+      },
+      {
+        path:"/booking/hotel/:data",
+        element:<Hotel_Booking_Page/>
+      },
+      {
+        path:"/payment/:body",
+        element:<Payment/>
+      }
+    ]
+  },
+]);
 
 export default App;
