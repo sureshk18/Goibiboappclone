@@ -36,14 +36,14 @@ const OfferForYou = () => {
 
   return (
     <div className=" mt-14 mb-10 bg-white rounded-lg shadow-md ">
-      <h1 className="my-4 text-center p-2 font-bold text-3xl" style={{position:'relative',top:'20px', padding:'0% 10% 3% 10%'}}>Offers For You</h1>
+      <h1 className="my-4 text-center p-2 font-bold text-3xl" >Offers For You</h1>
     
     <Container className="p-2" >
     <Slider {...settings} className="your-carousel-wrapper-class">
       {offer.map((item) => (
-        <Paper key={item.id} className="paper" >
-          <img src={item.heroUrl} alt="banner" className="h-48 rounded-lg" style={{width:'100%', height:'auto', paddingTop:'2%', paddingRight:'10%'}}/>
-          <Typography variant="h5">{item.type}</Typography>
+        <Paper key={item.id} className="paper bg-center" >
+          <img src={item.heroUrl} alt="banner" className="h-48 rounded-lg" />
+          <Typography variant="h8 font-bold">{item.type}</Typography>
           <Typography variant="body2">{item.pTl}</Typography>
         </Paper>
       ))}

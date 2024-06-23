@@ -84,10 +84,11 @@ const style = {
   top: "50%",
   left: "50%",
   transform: "translate(-50%, -50%)",
-  height: "600px",
+  height: "500px",
   width: "fit-content",
   bgcolor: "background.paper",
   boxShadow: 24,
+  borderRadius:'13px'
 };
 const inputLabelProps = {
   shrink: true,
@@ -100,7 +101,7 @@ const buttonSX = {
   px: 7,
   width: "100%",
   fontWeight: 400,
-  fontSize: "16px",
+  fontSize: "12px",
   borderRadius: "2px",
   backgroundColor: "secondary.hover",
   ":hover": { backgroundColor: "secondary.hover" },
@@ -200,11 +201,11 @@ function LogInTab() {
     setAnchorEl(null);
   }
   return (
-    <form
+    <form 
       onSubmit={handleLoginButton}
       style={{ display: "flex", flexDirection: "column", gap: "15px" }}
     >
-      <Typography variant="h5" component="h2" color={"rgba(0,0,0,0.87)"}>
+      <Typography variant="h5" component="h1" color={"rgba(0,0,0,0.87)"}>
         Log in to Goibibo
       </Typography>
       <TextField
@@ -368,7 +369,7 @@ function SignUpTab() {
   }
   return (
     <form
-      style={{ display: "flex", flexDirection: "column", gap: "24px" }}
+      style={{ display: "flex", flexDirection: "column", gap: "12px" }}
       onSubmit={handleSignUpButton}
     >
       <Typography variant="h5" component="h2" color={"rgba(0,0,0,0.87)"}>
@@ -416,10 +417,10 @@ function SignUpTab() {
           privacy policy
         </Typography>
         <br />
-        <Typography variant="caption" color="rgba(0,0,0,0.74)">
+        {/* <Typography variant="caption" color="rgba(0,0,0,0.74)">
           This site is protected by reCAPTCHA and the Google Privacy Policy and
           Terms of Service apply.
-        </Typography>
+        </Typography> */}
       </Box>
       <Popper
         placement="bottom-start"

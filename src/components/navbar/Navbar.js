@@ -6,6 +6,7 @@ import plane from "../../assets/plane.png";
 import hotel from "../../assets/hotel.png";
 import train from "../../assets/train.png";
 import bus from "../../assets/bus.png";
+import cab from '../../assets/cab.png';
 import manage from "../../assets/manage.png";
 import { useDispatch, useSelector } from "react-redux";
 import { setIsLoggedIn, setShowLoginSignupForm } from "../../utils/redux/authSlice";
@@ -59,24 +60,28 @@ const Navbar = () => {
             Flights
           </Link>
           <Link className={`cursor-pointer px-2 py-3 flex justify-center gap-1 font-bold text-gray-500 ${activeTab === 2 && 'border-b-2 border-sky-500'}`} onClick={() => setActiveTab(2)} to="/hotel">
-            <img src={hotel} alt="plane" className="h-6" />
+            <img src={hotel} alt="hotel" className="h-6" />
             Hotels
           </Link>
           <Link className={`cursor-pointer px-2 py-3 flex items-center gap-1 font-bold text-gray-500 ${activeTab === 3 && 'border-b-2 border-sky-500'}`} onClick={() => setActiveTab(3)} to="/trains">
-            <img src={train} alt="plane" className="h-5" />
+            <img src={train} alt="train" className="h-5" />
             Trains
           </Link>
           <Link className={`cursor-pointer px-2 py-3 font-bold flex items-center gap-1 text-gray-500 ${activeTab === 4 && 'border-b-2 border-sky-500'}`} onClick={() => setActiveTab(4)} to="/bus">
-            <img src={bus} alt="plane" className="h-5" />
+            <img src={bus} alt="bus" className="h-5" />
             Bus
           </Link>
-          <div className={`${isLoggedIn ? "cursor-pointer" : "cursor-not-allowed"} px-2 py-3 font-bold flex items-center gap-1 text-gray-500 ${activeTab === 5 && 'border-b-2 border-sky-500'}`} onClick={handleTripClick}>
-            <img src={manage} alt="plane" className="h-6" />
+          <Link className={`cursor-pointer px-2 py-3 font-bold flex items-center gap-1 text-gray-500 ${activeTab === 5 && 'border-b-2 border-sky-500'}`} onClick={() => setActiveTab(5)} to="/cab">
+            <img src={cab} alt="cab" className="h-5" />
+            Cab
+          </Link>
+          <div className={`${isLoggedIn ? "cursor-pointer" : "cursor-not-allowed"} px-2 py-3 font-bold flex items-center gap-1 text-gray-500 ${activeTab === 6 && 'border-b-2 border-sky-500'}`} onClick={handleTripClick}>
+            <img src={manage} alt="book" className="h-6" />
             Manage Booking (My Trips)
           </div>
         </ul>}
 
-      {isLoggedIn == false ? (<button className="border border-blue-500 rounded-lg py-2 px-4 text-blue-500 mr-5 " onClick={handleLoginClick}>
+      {isLoggedIn == false ? (<button className="border border-blue-500 rounded-full py-2 px-4 text-blue-500 mr-5 " onClick={handleLoginClick}>
         <AccountCircleIcon /> LOGIN / SIGNUP
       </button>) :
         // (<button className="border border-blue-500 rounded-lg py-2 px-4 text-blue-500 mr-5 " onClick={handleLogoutClick}><AccountCircleIcon /> Signout</button>)

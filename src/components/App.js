@@ -19,6 +19,7 @@ import My_Trips from "./my-trips/My_Trips";
 import { lazy } from "react";
 import { Suspense } from "react";
 import GlobalLoader from "./loder/GlobalLoader";
+import Cab_page from "./cab-section/Cab_page";
 
 const Hotel_Page= lazy(()=>import("./hotel-section/Hotel_Page"))
 const Hotel_Search_Page= lazy(()=>import("./hotel-section/Hotel_Search_Page"))
@@ -81,6 +82,10 @@ export const appRouter = createBrowserRouter([
       {
         path:"/booking/bus/:data",
         element:<Bus_Booking_Page/>
+      },
+      {
+        path:'/cab',
+        element:<Cab_page/>
       },
       {
         path:"/booking/train/:data",
