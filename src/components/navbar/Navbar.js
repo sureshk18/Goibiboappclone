@@ -81,7 +81,7 @@ const Navbar = () => {
           </div>
         </ul>}
 
-      {isLoggedIn == false ? (<button className="border border-blue-500 rounded-full py-2 px-4 text-blue-500 mr-5 " onClick={handleLoginClick}>
+      {isLoggedIn == false ? (<button className="border border-blue-500 rounded-lg py-1.5 px-1.5 text-black-500 mr-3 " onClick={handleLoginClick}>
         <AccountCircleIcon /> LOGIN / SIGNUP
       </button>) :
         // (<button className="border border-blue-500 rounded-lg py-2 px-4 text-blue-500 mr-5 " onClick={handleLogoutClick}><AccountCircleIcon /> Signout</button>)
