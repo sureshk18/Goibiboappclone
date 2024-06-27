@@ -231,17 +231,6 @@ function LogInTab() {
       >
         Login
       </button>
-      <Box sx={{ mt: 2 }}>
-        <Typography variant="caption" color="rgba(0,0,0,0.74)">
-          By signing up, I understand & agree to Goibibo terms of use and
-          privacy policy
-        </Typography>
-        <br />
-        <Typography variant="caption" color="rgba(0,0,0,0.74)">
-          This site is protected by reCAPTCHA and the Google Privacy Policy and
-          Terms of Service apply.
-        </Typography>
-      </Box>
       <Popper
         disablePortal
         placement="bottom-start"
@@ -411,17 +400,6 @@ function SignUpTab() {
       >
         SignUp
       </button>
-      <Box>
-        <Typography variant="caption" color="rgba(0,0,0,0.74)">
-          By signing up, I understand & agree to Goibibo terms of use and
-          privacy policy
-        </Typography>
-        <br />
-        {/* <Typography variant="caption" color="rgba(0,0,0,0.74)">
-          This site is protected by reCAPTCHA and the Google Privacy Policy and
-          Terms of Service apply.
-        </Typography> */}
-      </Box>
       <Popper
         placement="bottom-start"
         open={anchorEl != null}
