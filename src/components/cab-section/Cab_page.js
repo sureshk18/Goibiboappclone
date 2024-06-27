@@ -9,8 +9,8 @@ const Cab_page = () => {
     return (
         <div className=''>
             <div className='w-10/12 m-auto'>
-                <h1 className='font-bold text-2xl my-4 relative text-black z-20'>Book Online Cab</h1>
-                <div>
+                <h1 className='font-bold text-5xl my-4 relative text-orange-900 z-20'>Upcoming</h1>
+                {/* <div>
                     <label htmlFor='p-2' className='p-2'>
                         From
                     </label>
@@ -40,9 +40,7 @@ const Cab_page = () => {
 
                         </DatePicker>
                     </LocalizationProvider>
-
-
-                </div>
+                </div> */}
             </div>
         </div>
     )
