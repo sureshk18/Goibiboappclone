@@ -84,11 +84,11 @@ const style = {
   top: "50%",
   left: "50%",
   transform: "translate(-50%, -50%)",
-  height: "500px",
+  height: "450px",
   width: "fit-content",
   bgcolor: "background.paper",
-  boxShadow: 24,
-  borderRadius:'13px'
+  boxShadow: 14,
+  borderRadius:'10px'
 };
 const inputLabelProps = {
   shrink: true,
@@ -206,10 +206,10 @@ function LogInTab() {
       style={{ display: "flex", flexDirection: "column", gap: "15px" }}
     >
       <Typography variant="h5" component="h1" color={"rgba(0,0,0,0.87)"}>
-        Log in to Goibibo
+        Log in
       </Typography>
       <TextField
-        label="Enter Email"
+        label="Enter Your Email"
         onChange={removeError}
         type="text"
         inputRef={loginEmailRef}
@@ -218,7 +218,7 @@ function LogInTab() {
       />
       <TextField
         onChange={removeError}
-        label="Enter Password"
+        label="Enter Your Password"
         inputRef={loginPasswordRef}
         InputLabelProps={{ ...inputLabelProps }}
         variant="standard"
@@ -227,7 +227,7 @@ function LogInTab() {
       <button
         ref={loginButtonRef}
         type="submit"
-        className="text-white bg-orange-500 py-1 px-7 font-medium rounded-md shadow-lg"
+        className="text-white bg-blue-700 py-1 px-7 font-medium rounded-md shadow-lg"
       >
         Login
       </button>
@@ -358,22 +358,22 @@ function SignUpTab() {
   }
   return (
     <form
-      style={{ display: "flex", flexDirection: "column", gap: "12px" }}
+      style={{ display: "flex", flexDirection: "column", gap: "10px" }}
       onSubmit={handleSignUpButton}
     >
       <Typography variant="h5" component="h2" color={"rgba(0,0,0,0.87)"}>
-        Sign up to Goibibo
+        Sign up 
       </Typography>
       <TextField
         onChange={removeError}
-        label="Enter Name"
+        label="Enter Your Name"
         inputRef={signupNameRef}
         InputLabelProps={{ ...inputLabelProps }}
         variant="standard"
       />
       <TextField
         onChange={removeError}
-        label="Enter Email"
+        label="Enter Your Email"
         inputRef={signupEmailRef}
         InputLabelProps={{ ...inputLabelProps }}
         variant="standard"
@@ -396,7 +396,7 @@ function SignUpTab() {
       />
       <button
         type="submit"
-        className="text-white bg-orange-500 py-1 px-7 font-medium rounded-md shadow-lg"
+        className="text-white bg-blue-700 py-1 px-7 font-medium rounded-md shadow-lg"
       >
         SignUp
       </button>
