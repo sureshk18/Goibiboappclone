@@ -4,7 +4,7 @@ import { Paper, Typography,Container } from "@mui/material";
 import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
-import "./OfferForYou.css";
+import "../offer-fory-you-carousel/OfferForYou.css";
 import {useMediaQuery} from '@mui/material';
 
 const OfferForYou = () => {
